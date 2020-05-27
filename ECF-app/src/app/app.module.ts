@@ -11,6 +11,7 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
 import {FormsModule} from '@angular/forms'
 import { PagesModule } from './pages/pages.module';
 import { UserService } from './user/user.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { UserService } from './user/user.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

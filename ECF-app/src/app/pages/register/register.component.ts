@@ -18,14 +18,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
   checkUserName(){
-
+    
   }
-  // submit() {
-  //   if (!this.username || !this.password || !this.email) {
-  //     this.user = { 'username': this.username, 'password': this.password, 'email': this.email }
-  //     this.userService.create(this.user).subscribe(() => {
-        
-  //     })
-  //   }
-  // }
+  submit() {
+    if (!this.username || !this.password || !this.email) {
+      this.user = { 'username': this.username, 'password': this.password, 'email': this.email }
+      this.userService.create(this.user).subscribe((result) => {
+        console.log(result)
+      });
+    }
+  }
 }
