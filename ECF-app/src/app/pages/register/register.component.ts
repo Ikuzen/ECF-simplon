@@ -21,7 +21,9 @@ export class RegisterComponent implements OnInit {
     
   }
   submit() {
-    if (!this.username || !this.password || !this.email) {
+    console.log('fields missing')
+
+    if (this.username && this.password && this.email) {
       this.user = { 'username': this.username, 'password': this.password, 'email': this.email }
       this.userService.create(this.user).subscribe((result) => {
         console.log(result)

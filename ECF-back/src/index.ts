@@ -2,20 +2,22 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as debug from 'debug';
 import * as uuid from 'uuid';
-import {User} from './users-service/users-interface';
-import {users_schema, schemaVerify} from './users-service/users-schema';
-import { dbConfig } from './config';
 import { DbManager } from './db-manager';
+import { dbConfig } from './config';
+import { schemaVerify } from './users-service/users-schema';
+import { User } from './users-service/users-interface';
+
 const log = debug('tn:express');
 
 const app = express();
+const cors = require('cors');
 
 const PORT = 3000;
 
 const dbManager = new DbManager(dbConfig);
 
 app.use(bodyParser.json());
-
+app.use(cors({origin: 'http://localhost:4200'}))
 
 //Requests
 app.get('/', (req, res) => {
