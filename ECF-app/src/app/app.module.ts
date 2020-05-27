@@ -8,7 +8,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
-
+import {FormsModule} from '@angular/forms'
+import { PagesModule } from './pages/pages.module';
+import { UserService } from './user/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +22,10 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
