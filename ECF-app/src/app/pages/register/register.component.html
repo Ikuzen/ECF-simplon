@@ -1,0 +1,39 @@
+<div id="login-form">
+    <h3 class="first">Login</h3>
+    <div class="p-grid ui-fluid login-form-group">
+        <div class="p-col-12 p-md-4">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                <input name="name" [(ngModel)]="username" required minlength="4" required maxlength="30" type="text"
+                    pInputText placeholder="Username" #name="ngModel">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                    <div *ngIf="name.errors.required">
+                        Name is required.
+                    </div>
+                    <div *ngIf="name.errors.minlength">
+                        Name must be at least 4 characters long.
+                    </div>
+                    <div *ngIf="name.errors.maxlength">
+                        Name must be at under 30 characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon"><i class="pi pi-lock" style="line-height: 1.25;"></i></span>
+                    <input [(ngModel)]="password" type="password" pInputText placeholder="Password">
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-4">
+                <div class="ui-inputgroup">
+                    <span class="ui-inputgroup-addon">@</span>
+                    <input [(ngModel)]="email" type="text" pInputText placeholder="Email">
+                </div>
+            </div>
+        </div>
+        <button pButton type="button" label="Submit" (click)="submit()">Create account</button>
+
+    </div>
