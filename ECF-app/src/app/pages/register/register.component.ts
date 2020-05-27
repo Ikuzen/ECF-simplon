@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 import { User } from 'src/app/user/user';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,31 +17,34 @@ export class RegisterComponent implements OnInit {
   emailError = "";
 
   user: User;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
-  checkUserNameValidity(){
-    
-  }
+
   submit() {
-    console.log('fields missing')
 
     if (this.username && this.password && this.email) {
       this.user = { 'username': this.username, 'password': this.password, 'email': this.email }
-      this.userService.create(this.user).subscribe((result) => {
-        console.log('success')
+      this.userService.getByName(this.username)
+      .subscribe(
+        (result) => { //if name exist, then display error
+          this.usernameError = 'There already is a user with that username';
+          
       },
-      (error) => {
-        console.log(error);
-        if (error.status === 409){
-          this.usernameError = 'There already is a user with the username "test"';
-        }
-        else if(error?.error?.details[0]?.message === '"email" must be a valid email'){
-            this.emailError = '"email" must be a valid email';
-        }
-      })
-      ;
+        (err) => { // if name doesn't existe, create
+          this.userService.create(this.user).subscribe((result) => {
+            this.router.navigate(['/login', { success: true }]);
+          },
+            (error) => {
+              if (error.status === 409) {
+                this.usernameError = 'There already is a user with that username';
+              }
+              else if (error?.error?.details[0]?.message === '"email" must be a valid email') {
+                this.emailError = '"email" must be a valid email';
+              }
+            });
+        })
     }
   }
 }

@@ -20,7 +20,6 @@ export class DbManager {
             this.client = client;
             this.db = client.db(dbName);
             this.collection = this.db.collection(collectionName);
-            this.collection.createIndex({"name": 1}, { unique: true } )
         });
     }
     async putDocument(obj: any) {
@@ -38,6 +37,12 @@ export class DbManager {
     async getDocument(_id: string) {
         log('Get document...');
         const res = await this.collection.findOne({_id});
+        return res;
+    }
+
+    async getDocumentByName(username:string){
+        log('Get document...');
+        const res = await this.collection.findOne({username});
         return res;
     }
 

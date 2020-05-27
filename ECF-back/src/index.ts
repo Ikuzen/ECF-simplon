@@ -40,13 +40,14 @@ app.post('/users', async (req, res) => {
         await dbManager.putDocument(user);
         return res.send(user);
     } catch (e) {
+        console.log(e)
         return res.status(409).send(
             `There already is a user with the username "${user.username}"`
         )
     }
 });
 //GET BY ID
-app.get('/users/:id', async (req, res) => {
+app.get('/users/:id/', async (req, res) => {
     const { id } = req.params;
     
     const user: User = await dbManager.getDocument(id);
@@ -57,6 +58,17 @@ app.get('/users/:id', async (req, res) => {
 
     return res.send(user);
 });
+//GET BY USERNAME
+app.get('/users/username/:username', async(req,res) =>{
+    const { username } = req.params;
+    const user: User = await dbManager.getDocumentByName(username);
+
+    if (!user) {
+        return res.status(404).send(`User ${username} Not Found`);
+    }
+
+    return res.send(user);
+})
 //GET ALL
 app.get('/users/', async (req, res) => {
     const users: User[] = await dbManager.listDocuments();
@@ -93,7 +105,7 @@ app.put('/users/:id', async(req, res) => {
     const schemaValidation = schemaVerify(modifiedObject)
     
     if(schemaValidation.error){
-        return res.status(209).send(`Couldn't update "${req.body.name}`)
+        return res.status(209).send(`Couldn't update "${req.body.username}`)
     }
     try {
         const update = await dbManager.updateDocument(id, req.body);
@@ -101,7 +113,7 @@ app.put('/users/:id', async(req, res) => {
         
     } catch (e) {
         return res.status(409).send(
-            `Couldn't update "${req.body.name}"`
+            `Couldn't update "${req.body.username}"`
         )
     }
 });

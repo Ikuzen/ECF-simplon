@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,18 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   email: string;
-  usernameTooltip = "";
-  constructor() { }
-
+  accountCreated = false;
+  constructor(private router: Router, private route: ActivatedRoute,
+  ) { }
   ngOnInit(): void {
-  }
+    this.route.params.subscribe(params => {
+      if (params.success === "true") {
+        this.accountCreated = true;
+      }
+    });
 
-  submit(){
-    if(!this.username || !this.password || !this.email){
-    }
+  };
+  login(){
+    
   }
 }
