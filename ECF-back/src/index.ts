@@ -1,24 +1,18 @@
-console.log('Try npm run check/fix!');
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import * as debug from 'debug';
 
-const longString =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut aliquet diam.';
+const log = debug('tn:express');
 
-const trailing = 'Semicolon';
+const app = express();
 
-const why = 'am I tabbed?';
+const PORT = 3000;
 
-export function doSomeStuff(
-  withThis: string,
-  andThat: string,
-  andThose: string[]
-) {
-  //function on one line
-  if (!andThose.length) {
-    return false;
-  }
-  console.log(withThis);
-  console.log(andThat);
-  console.dir(andThose);
-  return;
-}
-// TODO: more examples
+app.use(bodyParser.json());
+
+//Requests
+app.get('/', (req, res) => {
+    res.send('<h1>Users service</h1>');
+});
+
+app.listen(PORT, () => log('Listening on port', PORT));
