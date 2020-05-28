@@ -1,6 +1,9 @@
 <p-menubar [model]="items">
-    <div>
-        <button pButton label="Logout" class="pi pi-reply" style="margin-left:.25em">login</button>
-        <button pButton label="Logout" class="pi pi-user-edit" style="margin-left:.25em">register</button>
+    <div *ngIf="!isConnected">
+        <button pButton label="Login" class="pi pi-reply" style="margin-left:.25em" (click)="navigate('/login')">login</button>
+        <button pButton label="Register" class="pi pi-user-edit" style="margin-left:.25em"(click)="navigate('/register')">register</button>
+    </div>
+    <div *ngIf="isConnected">
+        <button pButton label="Logout" class="pi pi-exit" style="margin-left:.25em" (click)="logout()">Logout</button>
     </div>
 </p-menubar>

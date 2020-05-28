@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
-import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string;
   accountCreated = false;
   errorMessage = "";
-  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService
+  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, private localStorage:LocalStorageService
   ) { }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
     if (this.username && this.password) {
       this.userService.getByName(this.username).subscribe((result) => {
         if (result.password === this.password) {
-
+          this.localStorage.saveSession(result)
+          console.log("successfully connected")
         }
         else {
           this.errorMessage = 'wrong password';

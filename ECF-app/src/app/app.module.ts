@@ -12,10 +12,10 @@ import { FormsModule } from '@angular/forms'
 import { PagesModule } from './pages/pages.module';
 import { UserService } from './user/user.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import {NgxWebstorageModule} from 'ngx-webstorage';
 import {MenubarModule} from 'primeng/menubar';
 import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
 import { MenuModule } from 'primeng/menu';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -32,12 +32,11 @@ import { MenuModule } from 'primeng/menu';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgxWebstorageModule.forRoot(),
     MenubarModule,
-    MenuModule
+    MenuModule,
 
   ],
-  providers: [UserService],
+  providers: [UserService, LocalStorageService, Storage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
