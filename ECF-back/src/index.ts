@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as debug from 'debug';
@@ -98,10 +99,10 @@ app.delete('/users/', (req, res) => {
 //UPDATE BY ID
 app.put('/users/:id', async(req, res) => {
     const { id } = req.params;
-    let objectToModify = await dbManager.getDocument(id);
+    const objectToModify = await dbManager.getDocument(id);
     delete objectToModify._id;
     delete objectToModify.createdAt;
-    let modifiedObject = Object.assign(objectToModify,req.body);
+    const modifiedObject = Object.assign(objectToModify,req.body);
     const schemaValidation = schemaVerify(modifiedObject)
     
     if(schemaValidation.error){

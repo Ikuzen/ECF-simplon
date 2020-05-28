@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   username: string;
   password: string;
   email: string;
+  birthdate: Date;
   usernameError = "";
   passwordError = "";
   emailError = "";
@@ -24,8 +25,8 @@ export class RegisterComponent implements OnInit {
 
   submit() {
 
-    if (this.username && this.password && this.email) {
-      this.user = { 'username': this.username, 'password': this.password, 'email': this.email }
+    if (this.username && this.password && this.email && this.birthdate) {
+      this.user = { 'username': this.username, 'password': this.password, 'email': this.email, 'birthDate': this.birthdate }
       this.userService.getByName(this.username)
       .subscribe(
         (result) => { //if name exist, then display error

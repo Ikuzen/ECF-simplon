@@ -4,13 +4,14 @@
     <h3 class="first">Login</h3>
     <div class="p-grid ui-fluid login-form-group">
         <div class="p-col-12 p-md-4">
+            <!-- username -->
             <div class="ui-inputgroup">
-                <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                <span class="ui-inputgroup-addon "><i class="pi pi-user" style="line-height: 1.25;"></i></span>
                 <input name="name" [(ngModel)]="username" required minlength="4" required maxlength="30" type="text"
                     pInputText placeholder="Username" #name="ngModel">
                 </div>
             </div>
-
+            <!-- password -->
             <div class="p-col-12 p-md-4">
                 <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="pi pi-lock" style="line-height: 1.25;"></i></span>
@@ -19,6 +20,8 @@
             </div>
 
         </div>
-        <button pButton type="button" label="Submit" (click)="submit()">Connect</button>
+
+        <div class="error" >{{errorMessage}}</div>
+        <button pButton type="button" label="Submit" (click)="login()">Connect</button>
         <button pButton type="button" label="Submit">Forgot password ?</button>
 </div>

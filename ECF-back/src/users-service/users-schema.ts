@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const Joi = require('@hapi/joi');
 export const users_schema = Joi.object({
     username: Joi.string()
@@ -11,7 +12,7 @@ export const users_schema = Joi.object({
         .max(30)
         .required(),
     email: Joi.string().email({ tlds: { allow: false } }),
-    register_date: Joi.date()
+    birthDate: Joi.date()
 
 })
 

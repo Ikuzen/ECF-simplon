@@ -8,10 +8,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
-import {FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { PagesModule } from './pages/pages.module';
 import { UserService } from './user/user.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {NgxWebstorageModule} from 'ngx-webstorage';
+import {MenubarModule} from 'primeng/menubar';
+import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
+import { MenuModule } from 'primeng/menu';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +24,18 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegisterComponent,
     UserComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxWebstorageModule.forRoot(),
+    MenubarModule,
+    MenuModule
+
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
