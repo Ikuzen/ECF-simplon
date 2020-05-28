@@ -1,0 +1,37 @@
+[{
+  "_id": "a79a892c-7abb-40c5-9305-6b3172207298",
+  "username": "yann",
+  "password": "scaleae",
+  "email": "ynan@ge.co",
+  "birthDate": "1331-12-13",
+  "register_date": {
+    "$date": "2020-05-28T09:03:57.815Z"
+  }
+},{
+  "_id": "7e2f2156-d4a4-4a28-9b3d-aa621de92fe2",
+  "username": "test1",
+  "password": "test3rza",
+  "email": "rkzozrk@egtjof.s",
+  "birthDate": "2020-04-29",
+  "register_date": {
+    "$date": "2020-05-28T13:31:39.150Z"
+  }
+},{
+  "_id": "4118de68-d0b3-43fa-950b-9cd4f27088b2",
+  "username": "fafniraze",
+  "password": "zaeazeea",
+  "email": "azeea@azeae.adz",
+  "birthDate": "2020-04-30",
+  "register_date": {
+    "$date": "2020-05-28T13:31:57.660Z"
+  }
+},{
+  "_id": "12fbc198-084b-48f8-8128-42977191b8e4",
+  "username": "maia",
+  "password": "tatatata",
+  "email": "lbael@gekl.co",
+  "birthDate": "2000-05-28",
+  "register_date": {
+    "$date": "2020-05-28T15:23:51.498Z"
+  }
+}]
