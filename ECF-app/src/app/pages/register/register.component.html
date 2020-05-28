@@ -57,10 +57,10 @@
             <div class="p-col-12 p-md-4">
                 <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="pi pi-calendar"></i></span>
-                    <input [(ngModel)]="birthdate" type="date" pInputText placeholder="Email">
+                    <input [(ngModel)]="birthdate" type="date" pInputText placeholder="birthdate">
                 </div>
-                <div class="error" *ngIf="emailError">
-                    {{emailError}}
+                <div class="error" *ngIf="birthDateError">
+                    {{birthDateError}}
                 </div>
             </div>
         </div>
