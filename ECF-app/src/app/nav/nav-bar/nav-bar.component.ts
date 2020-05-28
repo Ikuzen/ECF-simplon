@@ -27,7 +27,10 @@ export class NavBarComponent implements OnInit {
       if (!result.username) {
         this.isConnected = false;
         this.items = [{
-          label: 'Home', routerLink: ['/pages'],
+          label: 'Home', routerLink: ['/pages']
+        },
+        {
+          label: 'User list', routerLink: ['users']
         }];
       }
       if (result.username) {
