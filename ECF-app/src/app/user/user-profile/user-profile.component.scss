@@ -1,0 +1,36 @@
+.field {
+  display: flex;
+  flex-direction: row;
+
+  span {
+    display: flex;
+    align-items: center;
+
+    i {
+      padding-left: 10px;
+
+    }
+
+    i:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.infos {
+  div {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+p-header {
+  display: flex;
+
+  i {
+    height: 50%;
+    width: 50%;
+    padding: 5px;
+    padding-left: 10px;
+  }
+}

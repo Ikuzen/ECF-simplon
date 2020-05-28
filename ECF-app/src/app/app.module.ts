@@ -16,6 +16,9 @@ import {MenubarModule} from 'primeng/menubar';
 import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
 import { MenuModule } from 'primeng/menu';
 import { LocalStorageService } from './services/local-storage.service';
+import {CardModule} from 'primeng/card';
+import {InputTextModule} from 'primeng/inputtext';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { LocalStorageService } from './services/local-storage.service';
     HttpClientModule,
     MenubarModule,
     MenuModule,
+    CardModule,
+    InputTextModule,
+    ButtonModule
 
   ],
   providers: [UserService, LocalStorageService, Storage],

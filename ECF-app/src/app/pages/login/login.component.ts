@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       this.userService.getByName(this.username).subscribe((result) => {
         if (result.password === this.password) {
           this.localStorage.saveSession(result)
+          this.router.navigate(["/user"])
           console.log("successfully connected")
         }
         else {

@@ -1,1 +1,32 @@
-<p>user-profile works!</p>
+<p-card [style]="{width: '360px'}" styleClass="ui-card-shadow">
+    <p-header>
+        <span><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+        <h1>Member profile</h1>
+    </p-header>
+    <div class="infos">
+        <div class="field p-grid">
+            <label class="p-col" for="">username</label>
+            <input class="p-col"type="text" pInputText [(ngModel)]="user.username"/>
+            <span><i class="pi pi-pencil" style="line-height: 1.25;"></i></span>
+    
+        </div>
+        <div class="field p-grid">
+            <label class="p-col"for="">birthdate</label>
+            <input class="p-col" type="date" pInputText [(ngModel)]="user.birthDate"/>
+                    <span><i class="pi pi-pencil" style="line-height: 1.25;"></i></span>
+    
+        </div>
+        <div class="field p-grid">
+            <label class="p-col" for="">email</label>
+            <input class="p-col" type="text" pInputText [(ngModel)]="user.email"/>
+            <span><i class="pi pi-pencil" style="line-height: 1.25;"></i></span>
+    
+        </div>
+    </div>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam
+        deserunt
+        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+    </div>
+
+    <p-button label="update infos" (click)="updateInfos()"></p-button>
+</p-card>

@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
       if (!result.username) {
         this.isConnected = false;
         this.items = [{
-          label: 'Home', routerLink: ['/pages']
+          label: 'Home', routerLink: ['/pages'],
         }];
       }
       if (result.username) {
@@ -32,7 +32,7 @@ export class NavBarComponent implements OnInit {
         this.items = [{
           label: 'Home', routerLink: ['/pages']
         },
-        { label: `Welcome ${result.username}`, routerLink: ["/profile"] }
+        { label: `Welcome ${result.username}`, routerLink: ["/user"] }
         ];
       }
       console.log(this.isConnected)
@@ -45,5 +45,6 @@ export class NavBarComponent implements OnInit {
   }
   logout() {
     this.storageService.logOut();
+    this.navigate("/pages");
   }
 }

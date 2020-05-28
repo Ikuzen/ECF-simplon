@@ -101,12 +101,13 @@ app.put('/users/:id', async(req, res) => {
     const { id } = req.params;
     const objectToModify = await dbManager.getDocument(id);
     delete objectToModify._id;
-    delete objectToModify.createdAt;
+    delete objectToModify.register_date;
     const modifiedObject = Object.assign(objectToModify,req.body);
+    console.log(modifiedObject)
     const schemaValidation = schemaVerify(modifiedObject)
     
     if(schemaValidation.error){
-        return res.status(209).send(`Couldn't update "${req.body.username}`)
+        return res.status(409).send(`Couldn't update "${req.body.username}`)
     }
     try {
         const update = await dbManager.updateDocument(id, req.body);
