@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -9,30 +10,40 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router: Router, private storageService: LocalStorageService) { }
-  isConnected: boolean;
   items: MenuItem[];
+  isConnected: boolean;
+  constructor(private router: Router, private storageService: LocalStorageService) {
+  }
 
   ngOnInit() {
-    this.isConnected = this.storageService.checkSession();
-    if (!this.isConnected) {
-      this.items = [{
-        label: 'Home', routerLink: ['/pages']
-      }];
-    }
-    else if (this.isConnected) {
-      this.items = [{
-        label: 'Home', routerLink: ['/pages']
-      },
-      { label: 'Profile', routerLink: ["/profile"] }];
-    }
+    this.items = [{
+      label: 'Home', routerLink: ['/pages']
+    }];
+    this.storageService.loginEvent$.subscribe((result) => {
+      console.log(result)
+      if (!result.username) {
+        this.isConnected = false;
+        this.items = [{
+          label: 'Home', routerLink: ['/pages']
+        }];
+      }
+      if (result.username) {
+        this.isConnected = true;
+        this.items = [{
+          label: 'Home', routerLink: ['/pages']
+        },
+        { label: `Welcome ${result.username}`, routerLink: ["/profile"] }
+        ];
+      }
+      console.log(this.isConnected)
+    });
   }
 
 
   navigate(link: any) {
     this.router.navigate([link]);
   }
-  logout(){
+  logout() {
     this.storageService.logOut();
   }
 }

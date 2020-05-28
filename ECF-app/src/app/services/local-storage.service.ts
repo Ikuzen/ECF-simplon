@@ -1,28 +1,30 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { User } from '../user/user';
+import { Subject, Observable, from, of, BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class LocalStorageService {
-
+  localStorage = window.localStorage;
+  private _loginEvent$: BehaviorSubject<{ username: string }> = new BehaviorSubject({username: this.localStorage.username});
   constructor() {
+
   }
-  storage = window.localStorage;
-  saveSession(user: User){
-    this.storage.setItem("username", user.username);
+  
+  get loginEvent$(): Observable<{ username: string }> {
+    return from(this._loginEvent$);
+  }
+  
+  saveSession(user: User) {
+    this.localStorage.setItem("username", user.username);
+    this._loginEvent$.next({ username: user.username });
   }
 
-  checkSession(){
-    if(this.storage.getItem("username")){
-      return true;
-    }
-    else{
-      return false;
-    }
-  }
-
-  logOut(){
-    this.storage.clear();
+  logOut() {
+    console.log("logged out")
+    this.localStorage.clear();
+    this._loginEvent$.next({"username":""});
   }
 }
