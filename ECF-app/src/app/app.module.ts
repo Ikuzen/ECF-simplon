@@ -19,6 +19,8 @@ import { LocalStorageService } from './services/local-storage.service';
 import {CardModule} from 'primeng/card';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
+import { UserListComponent } from './user/user-list/user-list.component';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {ButtonModule} from 'primeng/button';
     RegisterComponent,
     UserComponent,
     UserProfileComponent,
-    NavBarComponent
+    NavBarComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import {ButtonModule} from 'primeng/button';
     MenuModule,
     CardModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    CarouselModule
 
   ],
   providers: [UserService, LocalStorageService, Storage],

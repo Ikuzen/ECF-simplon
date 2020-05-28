@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   username: string;
   password: string;
+  passwordBis: string;
   email: string;
   birthdate: Date;
   usernameError = "";

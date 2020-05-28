@@ -18,6 +18,9 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     this.items = [{
       label: 'Home', routerLink: ['/pages']
+    },
+    {
+      label: 'User list', routerLink: ['users']
     }];
     this.storageService.loginEvent$.subscribe((result) => {
       console.log(result)
@@ -32,10 +35,13 @@ export class NavBarComponent implements OnInit {
         this.items = [{
           label: 'Home', routerLink: ['/pages']
         },
+        {
+          label: 'User list', routerLink: ['users']
+        },
         { label: `Welcome ${result.username}`, routerLink: ["/user"] }
         ];
       }
-      console.log(this.isConnected)
+      console.log(this.isConnected);
     });
   }
 
