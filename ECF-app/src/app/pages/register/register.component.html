@@ -69,23 +69,14 @@
               <div class="p-col-12 p-md-4">
                 <div class="ui-inputgroup">
                     <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                    <input [(ngModel)]="passwordBis" type="password" required minlength="7" required maxlength="30"
-                        #pass="ngModel" pInputText placeholder="Password">
-                    <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="alert alert-danger">
-
-                        <div class="error" *ngIf="pass.errors.minlength">
-                            password must be at least 7 characters long.
-                        </div>
-                        <div class="error" *ngIf="pass.errors.maxlength">
-                            password must be at most 30 characters long.
-                        </div>
-                        <div class="error" *ngIf="passwordError">
-                            {{passwordError}}
-                        </div>
+                    <input [(ngModel)]="passwordBis" type="password"
+                        #pass="ngModel" pInputText placeholder="Password confirmation">
                     </div>
                 </div>
             </div>
         </div>
+
+        <div style="color: red;"> {{generalError}}</div>
 
         <button pButton type="button" label="Create account" (click)="submit()"></button>
 

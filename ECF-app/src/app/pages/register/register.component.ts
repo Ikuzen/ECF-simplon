@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   passwordError = "";
   emailError = "";
   birthDateError = "";
-
+  generalError= "";
   user: User;
   constructor(private userService: UserService, private router: Router) { }
 
@@ -26,14 +26,13 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-
-    if (this.username && this.password && this.email && this.birthdate) {
+    this.generalError = ""
+    if (this.username && this.password && this.email && this.birthdate && this.passwordBis && (this.password === this.passwordBis)) {
       this.user = { 'username': this.username, 'password': this.password, 'email': this.email, 'birthDate': this.birthdate }
       this.userService.getByName(this.username)
       .subscribe(
         (result) => { //if name exist, then display error
           this.usernameError = 'There already is a user with that username';
-          
       },
         (err) => { // if name doesn't existe, create
           this.userService.create(this.user).subscribe((result) => {
@@ -48,6 +47,12 @@ export class RegisterComponent implements OnInit {
               }
             });
         })
+    }
+    else if(this.passwordBis !== this.password){
+      this.generalError = "passwords are not matching"
+    }
+    else{
+      this.generalError = "fields are missing"
     }
   }
 }
