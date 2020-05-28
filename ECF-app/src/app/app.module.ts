@@ -21,6 +21,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import { UserListComponent } from './user/user-list/user-list.component';
 import {CarouselModule} from 'primeng/carousel';
+import { PasswordRecoveryComponent } from './pages/password-recovery/password-recovery.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {CarouselModule} from 'primeng/carousel';
     UserComponent,
     UserProfileComponent,
     NavBarComponent,
+    PasswordRecoveryComponent,
     UserListComponent
   ],
   imports: [

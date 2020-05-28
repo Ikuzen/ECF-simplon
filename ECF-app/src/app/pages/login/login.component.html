@@ -22,6 +22,8 @@
         </div>
 
         <div class="error" >{{errorMessage}}</div>
-        <button pButton type="button" label="Connect" (click)="login()"></button>
-        <button pButton type="button" label="Forgot password ?"></button>
+        <div class="button-group">
+            <button pButton type="button" label="Connect" (click)="login()"></button>
+            <button pButton type="button" label="Forgot password ?" (click)="passwordRecovery()"></button>
+        </div>
 </div>

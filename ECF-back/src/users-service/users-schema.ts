@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const Joi = require('@hapi/joi');
 export const users_schema = Joi.object({
     username: Joi.string()

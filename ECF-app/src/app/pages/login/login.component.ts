@@ -41,4 +41,7 @@ export class LoginComponent implements OnInit {
         });
     }
   }
+  passwordRecovery(){
+    this.router.navigate(["/password-recovery"])
+  }
 }
