@@ -5,6 +5,7 @@ Contains :
 - A backend express application (Using mongoDB database)
 
 HOW TO START THE BACKEND:
+
 *for the database : 
 - Download  [MongoDB compass](https://www.mongodb.com/download-center/community)
 - Create a database and a collections with these names
@@ -14,7 +15,8 @@ then click on the Users collecion.
 
 *For the backend
 
-```cd ECF-back
+```
+cd ECF-back
 npm install
 npm run dev
 ```
@@ -24,7 +26,8 @@ it will open a server on ``localhost:3000``
 
 HOW TO START THE FRONT :
 
-```cd ECF-app
+```
+cd ECF-app
 npm install
 ng serve
 ```
