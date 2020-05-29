@@ -16,6 +16,7 @@
     "compile": "tsc",
     "dev": "ts-node-dev src/index.ts",
     "fix": "gts fix",
+    "prepare": "npm.cmd run compile",
     "pretest": "npm.cmd run compile",
     "posttest": "npm.cmd run check"
   },

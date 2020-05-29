@@ -22,43 +22,43 @@ export class DbManager {
             this.collection = this.db.collection(collectionName);
         });
     }
-    async putDocument(obj: any) {
+    async putDocument(obj: any):Promise<any>  {
         log(`Inserting object: ${JSON.stringify(obj, null, 2)}`);
         const res = await this.collection.insertOne(obj);
         return res;    
     }
 
-    async listDocuments() {
+    async listDocuments():Promise<any>   {
         log('Listing documents...');
         const res = await this.collection.find();
         return res.toArray();
     }
 
-    async getDocument(_id: string) {
+    async getDocument(_id: string):Promise<any>   {
         log('Get document...');
         const res = await this.collection.findOne({_id});
         return res;
     }
 
-    async getDocumentByName(username:string){
+    async getDocumentByName(username:string):Promise<any>  {
         log('Get document...');
         const res = await this.collection.findOne({username});
         return res;
     }
 
-    async deleteDocument(_id: string) {
+    async deleteDocument(_id: string):Promise<any>   {
         log('Delete document...');
         const res = await this.collection.deleteOne({_id});
         return res;
     }
 
-    async deleteAllDocuments() {
+    async deleteAllDocuments():Promise<any>  {
         log('Delete all documents...');
         const res = await this.collection.deleteMany({});
         return res;
     }
 
-    async updateDocument(_id:string, obj: any) {
+    async updateDocument(_id:string, obj: any):Promise<any>  {
         log('Updating document...');
         
         try{
